@@ -1,0 +1,22 @@
+
+# Set the program goal, the lowest level
+(PROGRAM ::= expr)
+
+# Numbers
+(nonzero ::= '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9')
+(digit ::= '0' | nonzero)
+(digits ::= digit | digit digits)
+(natural {int} ::= digit | nonzero digits)
+(decimal {float} ::= natural '.' digits | '.' digits)
+(number ::= natural | decimal)
+
+# Math Functions
+(add {+} ::= '+')
+(sub {-} ::= '-')
+(mult {*} ::= '*')
+(div {/} ::= '/')
+(bin_op_func ::= mult | div | add | sub)
+
+# Expressions 
+(expr ::= number | expr bin_op_func expr | '(' expr ')')
+
